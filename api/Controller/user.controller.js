@@ -1,4 +1,6 @@
 export const test =(req,res)=>
 {
-    res.send("Test route is being called")
+    res.json({
+       message : "Test route is being called"
+})
 }
