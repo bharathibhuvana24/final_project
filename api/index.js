@@ -2,11 +2,15 @@ import express from "express"
 import mongoose from "mongoose";
 import userRouter from "./Router/user.router.js";
 import authRouter from "./Router/auth.router.js";
+import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 dotenv.config()
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
+
+
 const mongodb_connection_string = process.env.MONGO;
 
 mongoose.connect(mongodb_connection_string).then(() =>
@@ -34,6 +38,7 @@ mongoose.connect(mongodb_connection_string).then(() =>
             statusCode
         })
     })
+
 
 
 app.listen(3000,()=>
